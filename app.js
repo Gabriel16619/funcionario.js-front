@@ -4,23 +4,44 @@
  */
 import funcionario from './funcionario.json' with {type:'json'}
 
-function criarCardFuncionario (funcionario){
-    const funcionariosContainer = document.getElementById('funcionarios')
-
+async function exibirDados() {
+    try {
+      const resposta = await fetch('./funcionario.json');
+      const funcionarios = await resposta.json();
+      funcionarios.forEach(criarCardFuncionario);
+    } catch (erro) {
+      console.error('Erro ao carregar os dados dos funcionários:', erro);
+    }
+  }
+  
+  function criarCardFuncionario(funcionario) {
+    const funcionariosContainer = document.getElementById('funcionarios');
+  
     const card = document.createElement('div');
     card.classList.add('card-funcionario');
-
-    //cadastro do nome do funcionario
+  
+    // Imagem
+    const img = document.createElement('img');
+    img.src = funcionario.imagem; // o JSON deve ter um campo "imagem"
+    img.alt = funcionario.nome;
+  
+    // Nome
     const nome = document.createElement('h3');
     nome.textContent = funcionario.nome;
-
-    const cargo = document.createComment('p')
-    cargo.textContent = funcionario.cargo
-
-    card.appendChild(img)
-    card.appendChild(nome)
-    card.appendChild(cargo)
-
-    funcionariosContainer.appendChild(card)
-
-}
+  
+    // Cargo
+    const cargo = document.createElement('p'); // corrigido: era createComment!
+    cargo.textContent = funcionario.cargo;
+  
+    // Montar o card
+    card.appendChild(img);
+    card.appendChild(nome);
+    card.appendChild(cargo);
+  
+    // Adicionar ao container
+    funcionariosContainer.appendChild(card);
+  }
+  
+  // Chamar a função principal
+  exibirDados();
+  

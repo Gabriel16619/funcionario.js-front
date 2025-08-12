@@ -33,8 +33,8 @@
   .funcionarios img {
     width: 100%;
     height: 200px;
-    border-radius: 50%; /* imagem redonda */
-    object-fit: cover;  /* para cobrir o espaço sem distorção */
+    border-radius: 50%; 
+    object-fit: cover;  
   }
   
 
