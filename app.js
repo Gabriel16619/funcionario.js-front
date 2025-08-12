@@ -1,4 +1,12 @@
 /**
+ * autor: Gabriel Cavalcante
+ * data: 12/08/2025
+ * descrição: fazer com que os dados do js vao para o style
+ * o que eu consegui fazer? aula-1: apenas uma parte do json e do css
+ * versão: 1.0
+ */
+
+/**
  * forEach -> ele envia "produtos" que estao dentro da classe/variavel, EX: --produtos.forEach(mostrarProdutos)--
  * Array: é uma estrutura de dados que armazena uma coleção de elementos do mesmo tipo (como números ou strings), acessíveis por meio de um índice
  */
@@ -20,20 +28,20 @@ async function exibirDados() {
     const card = document.createElement('div');
     card.classList.add('card-funcionario');
   
-    // Imagem
+    // parte de imagem do json
     const img = document.createElement('img');
-    img.src = funcionario.imagem; // o JSON deve ter um campo "imagem"
+    img.src = funcionario.imagem; 
     img.alt = funcionario.nome;
   
-    // Nome
+    // cadastro do nome
     const nome = document.createElement('h3');
     nome.textContent = funcionario.nome;
   
-    // Cargo
-    const cargo = document.createElement('p'); // corrigido: era createComment!
+    // entrada de dados referentes ao cargo
+    const cargo = document.createElement('p'); 
     cargo.textContent = funcionario.cargo;
   
-    // Montar o card
+    // criando os cards
     card.appendChild(img);
     card.appendChild(nome);
     card.appendChild(cargo);
