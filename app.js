@@ -10,46 +10,29 @@
  * forEach -> ele envia "produtos" que estao dentro da classe/variavel, EX: --produtos.forEach(mostrarProdutos)--
  * Array: é uma estrutura de dados que armazena uma coleção de elementos do mesmo tipo (como números ou strings), acessíveis por meio de um índice
  */
-import funcionario from './funcionario.json' with {type:'json'}
+import Funcionarios from './funcionario.json' with {type: 'json'}
 
-async function exibirDados() {
-    try {
-      const resposta = await fetch('./funcionario.json');
-      const funcionarios = await resposta.json();
-      funcionarios.forEach(criarCardFuncionario);
-    } catch (erro) {
-      console.error('Erro ao carregar os dados dos funcionários:', erro);
-    }
-  }
-  
-  function criarCardFuncionario(funcionario) {
-    const funcionariosContainer = document.getElementById('funcionarios');
-  
-    const card = document.createElement('div');
-    card.classList.add('card-funcionario');
-  
-    // parte de imagem do json
-    const img = document.createElement('img');
-    img.src = funcionario.imagem; 
-    img.alt = funcionario.nome;
-  
-    // cadastro do nome
-    const nome = document.createElement('h3');
-    nome.textContent = funcionario.nome;
-  
-    // entrada de dados referentes ao cargo
-    const cargo = document.createElement('p'); 
-    cargo.textContent = funcionario.cargo;
-  
-    // criando os cards
-    card.appendChild(img);
-    card.appendChild(nome);
-    card.appendChild(cargo);
-  
-    // Adicionar ao container
-    funcionariosContainer.appendChild(card);
-  }
-  
-  // Chamar a função principal
-  exibirDados();
-  
+function criarFuncionario(dadosFuncionario){
+  const container = document.getElementById('container')
+  const funcionarios = document.createElement('funcionario')
+  const imagem = document.createElement('img')
+  const nome = document.createElement('h1')
+  const cargo = document.createElement('h2')
+  const pastaimg = ",/img/"
+
+  funcionarios.classList,add('funcionarios');
+  imagem.src = pastaimg + dadosFuncionario.imagem
+  imagem.alt = dadosFuncionario.nome
+  nome.classList.add('nome')
+cargo.textContent = dadosFuncionario.cargo
+cargo.classList.add('cargo')
+
+container.appendChild(funcionarios)
+funcionarios.appendChild(imagem)
+funcionarios.appendChild(cargo)
+cargo.appendChild(nome)
+}
+function carregarFuncionarios(){
+  Funcionarios.forEach(criarFuncionario)
+}
+carregarFuncionarios()
