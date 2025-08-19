@@ -14,13 +14,13 @@ import Funcionarios from './funcionario.json' with {type: 'json'}
 
 function criarFuncionario(dadosFuncionario){
   const container = document.getElementById('container')
-  const funcionarios = document.createElement('funcionario')
+  const funcionarios = document.createElement('funcionarios')
   const imagem = document.createElement('img')
   const nome = document.createElement('h1')
   const cargo = document.createElement('h2')
-  const pastaimg = ",/img/"
+  const pastaimg = "/img/"
 
-  funcionarios.classList,add('funcionarios');
+  funcionarios.classList.add('funcionarios');
   imagem.src = pastaimg + dadosFuncionario.imagem
   imagem.alt = dadosFuncionario.nome
   nome.classList.add('nome')
